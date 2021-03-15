@@ -1,41 +1,38 @@
 import { Component, OnInit } from '@angular/core';
+import { Car } from 'src/app/models/car/car';
+import { CarDetail } from 'src/app/models/carDetail/carDetail';
+import { CarService } from 'src/app/services/car/car.service';
+
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.css']
+  styleUrls: ['./car.component.css'],
 })
+
 export class CarComponent implements OnInit {
+  cars: Car[] = [];
+  carDetails: CarDetail[] = [];
+  dataLoaded=false;
 
-  car1 = {
-    Id: 1,
-    carName: 'Ford Fiesta',
-    brandId: 1,
-    colorId: 1,
-    dailyPrice: 200,
-    modelYear: 2018,
-  };
-  car2 = {
-    Id: 2,
-    carName: 'Hyundai Accent Blue',
-    brandId: 2,
-    colorId: 1,
-    dailyPrice: 180,
-    modelYear: 2018,
-  };
-  car3 = {
-    Id: 3,
-    carName: 'Honda Civic',
-    brandId: 3,
-    colorId: 1,
-    dailyPrice: 250,
-    modelYear: 2019,
-  };
-
-  cars = [this.car1, this.car2, this.car3];
-  constructor() { }
+  constructor(private carService: CarService) {}
 
   ngOnInit(): void {
+    this.getCarsDetail();
   }
-
-}
+ 
+  getAll(){
+     this.carService.getCars().subscribe((response)=>{
+      this.cars = response.data;
+      this.dataLoaded=true;
+    })
+  }
+ 
+  getCarsDetail(){
+    this.carService.getCarsDetail().subscribe((response)=>{
+      this.carDetails = response.data;
+      this.dataLoaded=true;
+    })
+  }
+  
+} 
