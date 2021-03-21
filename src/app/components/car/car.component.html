@@ -9,6 +9,7 @@
         <th>BrandName</th>
         <th>ColorName</th>
         <th>Daily Price</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +19,7 @@
         <td>{{ car.brandName }}</td>
         <td>{{ car.colorName }}</td>
         <td>{{ car.dailyPrice }}</td>
+        <td><button class="btn btn-success" type="button" routerLink="cars/cardetail{{car.carId}}">Detaylar</button></td>
       </tr>
     </tbody>
   </table>
