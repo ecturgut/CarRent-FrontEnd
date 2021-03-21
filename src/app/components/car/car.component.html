@@ -1,25 +1,40 @@
-<div *ngIf= "dataLoaded==false" class="spinner-border text-success" role="status">
-    <span class="visually-hidden">Loading...</span>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <app-brand></app-brand>
+      <br>
+      <app-color></app-color>
+    </div>
+    <div class="col-md-8">
+      <div *ngIf= "dataLoaded==false" class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    
+      <div class="container">
+        <table class="table" *ngIf= "dataLoaded==true">
+          <thead>
+          <tr>
+            <th>Araç Adı</th>
+            <th>Marka</th>
+            <th>Renk </th>
+            <th>Fiyat</th>
+            <th>Model</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let car of carDetails"> 
+            <td>{{ car.carName }}</td>
+            <td>{{ car.brandName }}</td>
+            <td>{{ car.colorName }}</td>
+            <td>{{ car.dailyPrice }}</td>
+            <td><button class="btn btn-success" type="button" routerLink="/cars/cardetail/{{car.carId}}">Detaylar</button></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      
+    </div>
   </div>
-  <table class="table" *ngIf= "dataLoaded==true">
-      <thead>
-      <tr>
-        <th>*</th>
-        <th>Car Name</th>
-        <th>BrandName</th>
-        <th>ColorName</th>
-        <th>Daily Price</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let car of carDetails">
-        <td>{{ car.carId }}</td>
-        <td>{{ car.carName }}</td>
-        <td>{{ car.brandName }}</td>
-        <td>{{ car.colorName }}</td>
-        <td>{{ car.dailyPrice }}</td>
-        <td><button class="btn btn-success" type="button" routerLink="cars/cardetail{{car.carId}}">Detaylar</button></td>
-      </tr>
-    </tbody>
-  </table>
+</div>
+
