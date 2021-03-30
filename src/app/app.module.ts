@@ -10,7 +10,9 @@ import { NaviComponent } from './components/navi/navi.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { CustomerComponent } from './components/customer/customer.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
-
+import { FilterBrandPipe } from './pipes/brand/filter-brand.pipe';
+import { FilterColorPipe } from './pipes/color/filter-color.pipe';
+import { FilterCarPipe } from './pipes/car/filter-car.pipe';
 
 
 @NgModule({
@@ -23,6 +25,9 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     RentalComponent,
     ColorComponent,
     CarDetailComponent,
+    FilterBrandPipe,
+    FilterColorPipe,
+    FilterCarPipe
   ],
   imports: [
     HttpClientModule,
