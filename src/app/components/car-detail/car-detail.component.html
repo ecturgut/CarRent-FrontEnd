@@ -30,7 +30,7 @@
         <li class="list-group-item">Marka: {{car.brandName |uppercase}}</li>
         <li class="list-group-item">Renk: {{car.colorName}}</li>
         <li class="list-group-item">Model Yılı: {{car.modelYear}}</li>
-        <li class="list-group-item">Fiyat: {{car.dailyPrice |currency}}</li>
+        <li class="list-group-item">Fiyat: {{car.dailyPrice |currency: "TRY":"symbol-narrow":"1.2-2"}}</li>
         <li class="list-group-item">Araç Adı: {{car.carName}}</li>
       </ul>
       <section style="float: right">

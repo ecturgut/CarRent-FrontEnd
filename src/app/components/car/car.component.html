@@ -11,6 +11,13 @@
       </div>
     
       <div class="container">
+        <div class="mb-3">
+          <label for="filterText" class="form-label">Araç Ara </label>
+          <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"  placeholder="Bir şeyler yazın...">
+        </div>
+        <div *ngIf="filterText" class="alert alert-success">
+          {{filterText}} aradınız
+        </div>
         <table class="table" *ngIf= "dataLoaded==true">
           <thead>
           <tr>
@@ -22,12 +29,13 @@
             <th></th>
           </tr>
         </thead>
+
         <tbody>
-            <tr *ngFor="let car of carDetails"> 
-            <td>{{ car.carName }}</td>
-            <td>{{ car.brandName }}</td>
-            <td>{{ car.colorName }}</td>
-            <td>{{ car.dailyPrice }}</td>
+            <tr *ngFor="let car of carDetails |filterCar : filterText"> 
+            <td>{{ car.carName | uppercase }}</td>
+            <td>{{ car.brandName |uppercase }}</td>
+            <td>{{ car.colorName |uppercase }}</td>
+            <td>{{ car.dailyPrice |currency: "TRY":"symbol-narrow":"1.2-2"}}</td>
             <td><button class="btn btn-success" type="button" routerLink="/cars/cardetail/{{car.carId}}">Detaylar</button></td>
           </tr>
         </tbody>

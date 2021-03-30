@@ -13,6 +13,7 @@ import { CarService } from 'src/app/services/car/car.service';
 export class CarComponent implements OnInit {
   carDetails: CarDetail[] = [];
   dataLoaded=false;
+  filterText="";
 
   constructor(private carService: CarService,
     private activatedRoute: ActivatedRoute) {}

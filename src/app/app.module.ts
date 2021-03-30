@@ -13,6 +13,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { FilterBrandPipe } from './pipes/brand/filter-brand.pipe';
 import { FilterColorPipe } from './pipes/color/filter-color.pipe';
 import { FilterCarPipe } from './pipes/car/filter-car.pipe';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { FilterCarPipe } from './pipes/car/filter-car.pipe';
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
