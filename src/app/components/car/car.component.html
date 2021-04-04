@@ -42,10 +42,10 @@
                       <h5 style="text-align: center;" class="card-title">{{ car.brandName }}</h5>
                     </div>
                     <ul class="list-group list-group-flush">
-                      <li class="list-group-item">{{ car.carName | uppercase }}</li>
-                      <li class="list-group-item">{{ car.brandName | uppercase }}</li>
-                      <li class="list-group-item">{{ car.colorName | uppercase }}</li>
-                      <li class="list-group-item">{{ car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }}</li>
+                      <li style="text-align: center;" class="list-group-item">{{ car.carName | uppercase }}</li>
+                      <li style="text-align: center;" class="list-group-item">{{ car.brandName | uppercase }}</li>
+                      <li style="text-align: center;" class="list-group-item">{{ car.colorName | uppercase }}</li>
+                      <li style="text-align: center;" class="list-group-item">{{ car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }}</li>
                       <button class="btn btn-success" routerLink="/cars/cardetail/{{car.carId}}">Detay</button>
                     </ul>
                   </div>
