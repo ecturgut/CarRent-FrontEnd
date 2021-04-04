@@ -14,6 +14,8 @@ export class CarComponent implements OnInit {
   carDetails: CarDetail[] = [];
   dataLoaded=false;
   filterText="";
+  defaultimg:string="default.jpg";
+  imageBasePath:string="https://localhost:44301/images/";
 
   constructor(private carService: CarService,
     private activatedRoute: ActivatedRoute) {}
@@ -41,6 +43,7 @@ export class CarComponent implements OnInit {
     this.carService.getCarsDetail().subscribe((response)=>{
       this.carDetails = response.data;
       this.dataLoaded=true;
+
     })
   }
 
@@ -56,6 +59,14 @@ export class CarComponent implements OnInit {
       this.carDetails = response.data;
       this.dataLoaded=true;
     })
+  }
+
+  colGenerator(carDetails: CarDetail[]){
+    if(carDetails.length==2){
+      return "col-lg-6"
+    } else{
+      return "col-lg-4"
+    }
   }
 
   

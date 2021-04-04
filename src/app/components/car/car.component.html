@@ -2,47 +2,59 @@
   <div class="row">
     <div class="col-md-3">
       <app-brand></app-brand>
-      <br>
+      <br />
       <app-color></app-color>
     </div>
-    <div class="col-md-8">
-      <div *ngIf= "dataLoaded==false" class="spinner-border text-success" role="status">
+    <div class="col-md-9">
+      <div
+        *ngIf="dataLoaded == false"
+        class="spinner-border text-success"
+        role="status"
+      >
         <span class="visually-hidden">Loading...</span>
       </div>
-    
-      <div class="container">
+
+      <div>
         <div class="mb-3">
           <label for="filterText" class="form-label">Araç Ara </label>
-          <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"  placeholder="Bir şeyler yazın...">
+          <input style="margin-bottom: -50px;"
+            type="text"
+            [(ngModel)]="filterText"
+            class="form-control"
+            id="filterText"
+            placeholder="Bir şeyler yazın..."
+          />
         </div>
         <div *ngIf="filterText" class="alert alert-success">
-          {{filterText}} aradınız
+          {{ filterText }} aradınız
         </div>
-        <table class="table" *ngIf= "dataLoaded==true">
-          <thead>
-          <tr>
-            <th>Araç Adı</th>
-            <th>Marka</th>
-            <th>Renk </th>
-            <th>Fiyat</th>
-            <th>Model</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let car of carDetails |filterCar : filterText"> 
-            <td>{{ car.carName | uppercase }}</td>
-            <td>{{ car.brandName |uppercase }}</td>
-            <td>{{ car.colorName |uppercase }}</td>
-            <td>{{ car.dailyPrice |currency: "TRY":"symbol-narrow":"1.2-2"}}</td>
-            <td><button class="btn btn-success" type="button" routerLink="/cars/cardetail/{{car.carId}}">Detaylar</button></td>
-          </tr>
-        </tbody>
-      </table>
+          <div class="container-fluid d-flex justify-content-center">
+            <div class="row mt-5">
+              <div class="row">
+                <div style="margin-top: 15px;" *ngFor="let car of carDetails | filterCar: filterText" [class]="colGenerator(carDetails)">
+                  <div
+                    
+                    class="card"
+                    style="width: 18rem"
+                  >
+                    <img height="200" [src]="car.images.length !==0? imageBasePath+car.images[0]:imageBasePath+defaultimg " class="card-img-top" alt="..." />
+                    <div class="card-body">
+                      <h5 style="text-align: center;" class="card-title">{{ car.brandName }}</h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item">{{ car.carName | uppercase }}</li>
+                      <li class="list-group-item">{{ car.brandName | uppercase }}</li>
+                      <li class="list-group-item">{{ car.colorName | uppercase }}</li>
+                      <li class="list-group-item">{{ car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }}</li>
+                      <button class="btn btn-success" routerLink="/cars/cardetail/{{car.carId}}">Detay</button>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
       </div>
-      
     </div>
   </div>
 </div>
-
