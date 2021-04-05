@@ -3,6 +3,9 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 <ul class="list-group">
+  
+  <input type="text" placeholder="Marka Ara.."  class="form-control" id="markaAra"> 
+  <br>
   <li [class]="getAllBrandClass()" routerLink="/cars" (click)="cleanCurrentBrand()">Tüm Markalar</li>
   <li *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)"(click)="setCurrentBrand(brand)" 
   routerLink="/cars/brand/{{brand.id}}">

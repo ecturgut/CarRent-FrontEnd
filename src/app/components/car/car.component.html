@@ -15,21 +15,22 @@
       </div>
 
       <div>
-        <div class="mb-3">
-          <label for="filterText" class="form-label">Araç Ara </label>
+        <div class="mb-5">
+
           <input style="margin-bottom: -50px;"
             type="text"
             [(ngModel)]="filterText"
             class="form-control"
             id="filterText"
-            placeholder="Bir şeyler yazın..."
+            placeholder="Araç Ara..."
           />
         </div>
+        <br>
         <div *ngIf="filterText" class="alert alert-success">
           {{ filterText }} aradınız
         </div>
           <div class="container-fluid d-flex justify-content-center">
-            <div class="row mt-5">
+            <div class="row">
               <div class="row">
                 <div style="margin-top: 15px;" *ngFor="let car of carDetails | filterCar: filterText" [class]="colGenerator(carDetails)">
                   <div

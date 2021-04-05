@@ -1,43 +1,81 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <div id="carouselExampleControls" 
-  
-      class="carousel slide border border-dark" data-bs-ride="carousel">
-       <div class="carousel-inner">
-          
-         <div class="carousel-item " *ngFor="let image of carImages;  index as i; first as firstImage "  [ngClass]="{ active: firstImage }" >
-           <img src="{{imageUrl}}/{{image.imagePath}}" class="d-block w-100" alt="image.imagePath">
-            
+      <div
+        id="carouselExampleControls"
+        class="carousel slide border border-dark"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div
+            class="carousel-item"
+            *ngFor="let image of carImages; index as i; first as firstImage"
+            [ngClass]="{ active: firstImage }"
+          >
+            <img
+              src="{{ imageUrl }}/{{ image.imagePath }}"
+              style="height: 500px; width: 200px"
+              class="d-block w-100"
+              alt="image.imagePath"
+            />
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleControls"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
-       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
-         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Previous</span>
-         
-       </button>
-       <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="next">
-         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-         <span class="visually-hidden">Next</span>
-       </button>
-     </div>  
     </div>
-    
-    
-  </div>
-  <div class="col-md-4">
-    <div>
-      <ul *ngFor="let car of carDetails" class="list-group list-group-flush">
-        <li class="list-group-item">Marka: {{car.brandName |uppercase}}</li>
-        <li class="list-group-item">Renk: {{car.colorName}}</li>
-        <li class="list-group-item">Model Yılı: {{car.modelYear}}</li>
-        <li class="list-group-item">Fiyat: {{car.dailyPrice |currency: "TRY":"symbol-narrow":"1.2-2"}}</li>
-        <li class="list-group-item">Araç Adı: {{car.carName}}</li>
-      </ul>
-      <section style="float: right">
-        <div *ngFor="let car of carDetails" class="carousel-caption d-none d-md-block">
-      <button routerLink = "/car/{{car.carId}}" type="button"style="width:150px;margin-left:81%;margin-bottom: 280px;background-color: #4b4c4e;" class="btn btn-primary">Kirala</button>
-        </div> 
-      </section>
-  </div>
+    <div class="col-md-4">
+      <div>
+        <ul *ngFor="let car of carDetails" class="list-group list-group-flush">
+          <li class="list-group-item">
+            Marka: {{ car.brandName | uppercase }}
+          </li>
+          <li class="list-group-item">Renk: {{ car.colorName }}</li>
+          <li class="list-group-item">Model Yılı: {{ car.modelYear }}</li>
+          <li class="list-group-item">
+            Fiyat:
+            {{ car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }}
+          </li>
+          <li class="list-group-item">Araç Adı: {{ car.carName }}</li>
+          <br>
+          <button
+          routerLink="/car/{{ car.carId }}"
+          type="button"
+          style="
+            width: auto;
+            background-color: #3f8b35;
+          "
+          class="btn btn-primary"
+        >
+          Kirala
+        </button>
+
+        </ul>
+        <section style="float: right">
+          <div
+            *ngFor="let car of carDetails"
+            class="carousel-caption d-none d-md-block"
+          >
+            
+          </div>
+        </section>
+      </div>
+    </div>
   </div>
 </div>
