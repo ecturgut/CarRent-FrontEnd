@@ -4,7 +4,14 @@
   </div>
 <ul class="list-group">
   
-  <input type="text" placeholder="Marka Ara.."  class="form-control" id="markaAra"> 
+  <input type="text" placeholder="Marka Ara.."  type="text"
+  [(ngModel)]="filterText"
+  class="form-control"
+  id="filterText"> 
+  <br />
+  <div *ngIf="filterText" class="alert alert-success">
+    {{ filterText }} aradınız
+  </div>
   <br>
   <li [class]="getAllBrandClass()" routerLink="/cars" (click)="cleanCurrentBrand()">Tüm Markalar</li>
   <li *ngFor="let brand of brands" [class]="getCurrentBrandClass(brand)"(click)="setCurrentBrand(brand)" 

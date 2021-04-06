@@ -15,24 +15,10 @@
       </div>
 
       <div>
-        <div class="mb-5">
-          <input
-            style="margin-bottom: -50px"
-            type="text"
-            [(ngModel)]="filterText"
-            class="form-control"
-            id="filterText"
-            placeholder="Araç Ara..."
-          />
-        </div>
-        <br />
-        <div *ngIf="filterText" class="alert alert-success">
-          {{ filterText }} aradınız
-        </div>
 
-        <div class="row">
-          <div class="col-md-5">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">
+        <div class="row black">
+          <div class="col-md-4" >
+            <label class="mr-sm-2" for="inlineFormCustomSelect" style="margin: 10px;">
               Marka Seç
             </label>
             <select
@@ -48,8 +34,8 @@
               </option>
             </select>
           </div>
-          <div class="col-md-5">
-            <label class="mr-sm-2" for="inlineFormCustomSelect">
+          <div class="col-md-4">
+            <label class="mr-sm-2" for="inlineFormCustomSelect" style="margin: 10px;">
               Renk Seç
             </label>
             <select
@@ -66,7 +52,7 @@
               </option>
             </select>
           </div>
-          <div class="col-md-2" style="margin-top: 30px; width: 100px">
+          <div class="col-md-2" style="width: 100px; margin-top: 5px;">
             <button
               class="btn btn-success"
               routerLink="/cars/filter/{{ brandId }}/{{ colorId }}"
@@ -74,6 +60,29 @@
               Filtrele
             </button>
           </div>
+          <div class="col-md-2" style="width: 100px; margin-top: 5px;">
+            <button
+              class="btn btn-danger"
+              routerLink="/cars"
+            >
+              Temizle
+            </button>
+          </div>
+        </div>
+        <br>
+        <div class="mb-5">
+          <input
+            style="margin-bottom: -50px"
+            type="text"
+            [(ngModel)]="filterText"
+            class="form-control"
+            id="filterText"
+            placeholder="Araç Ara..."
+          />
+        </div>
+        <br />
+        <div *ngIf="filterText" class="alert alert-success">
+          {{ filterText }} aradınız
         </div>
 
         <div class="container-fluid d-flex justify-content-center">

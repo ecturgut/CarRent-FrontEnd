@@ -4,7 +4,14 @@
   </div>
 
 <ul class="list-group">
-    <input type="text" class="form-control"placeholder="Renk Ara.." id="colorAra">
+  <input type="text" placeholder="Renk Ara.."  type="text"
+  [(ngModel)]="filterText"
+  class="form-control"
+  id="filterText"> 
+  <br />
+  <div *ngIf="filterText" class="alert alert-success">
+    {{ filterText }} aradınız
+  </div>
     <br>
     <li [class]="getAllColorClass()" routerLink="/cars">Tüm Renkler</li>
     <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}"

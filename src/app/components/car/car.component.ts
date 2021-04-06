@@ -90,10 +90,7 @@ export class CarComponent implements OnInit {
   getCarsByFilter(brandId:number,colorId:number){
     this.carService.getCarsByFilter(brandId,colorId).subscribe((response)=>{
       this.carDetails=response.data;
-      console.log(response.data);
-      if(this.carDetails.length==0){
-        console.log("bişey");
-      }
+      this.dataLoaded=true;
     })
   }
   
