@@ -16,8 +16,8 @@
 
       <div>
         <div class="mb-5">
-
-          <input style="margin-bottom: -50px;"
+          <input
+            style="margin-bottom: -50px"
             type="text"
             [(ngModel)]="filterText"
             class="form-control"
@@ -25,36 +25,108 @@
             placeholder="Araç Ara..."
           />
         </div>
-        <br>
+        <br />
         <div *ngIf="filterText" class="alert alert-success">
           {{ filterText }} aradınız
         </div>
-          <div class="container-fluid d-flex justify-content-center">
+
+        <div class="row">
+          <div class="col-md-5">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">
+              Marka Seç
+            </label>
+            <select
+              class="custom-select custom-select-md mb-3"
+              [(ngModel)]="brandId"
+            >
+              <option
+                [value]="brand.id"
+                *ngFor="let brand of brands"
+                [selected]="getSelectedBrandId(brand.id)"
+              >
+                {{ brand.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-5">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">
+              Renk Seç
+            </label>
+            <select
+              class="custom-select custom-select-md mb-3"
+              [(ngModel)]="colorId"
+              aria-placeholder="All Colors"
+            >
+              <option
+                *ngFor="let color of colors"
+                [value]="color.id"
+                [selected]="getSelectedColorId(color.id)"
+              >
+                {{ color.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-2" style="margin-top: 30px; width: 100px">
+            <button
+              class="btn btn-success"
+              routerLink="/cars/filter/{{ brandId }}/{{ colorId }}"
+            >
+              Filtrele
+            </button>
+          </div>
+        </div>
+
+        <div class="container-fluid d-flex justify-content-center">
+          <div class="row">
             <div class="row">
-              <div class="row">
-                <div style="margin-top: 15px;" *ngFor="let car of carDetails | filterCar: filterText" [class]="colGenerator(carDetails)">
-                  <div
-                    
-                    class="card"
-                    style="width: 18rem"
-                  >
-                    <img height="200" [src]="car.images.length !==0? imageBasePath+car.images[0]:imageBasePath+defaultimg " class="card-img-top" alt="..." />
-                    <div class="card-body">
-                      <h5 style="text-align: center;" class="card-title">{{ car.brandName }}</h5>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                      <li style="text-align: center;" class="list-group-item">{{ car.carName | uppercase }}</li>
-                      <li style="text-align: center;" class="list-group-item">{{ car.brandName | uppercase }}</li>
-                      <li style="text-align: center;" class="list-group-item">{{ car.colorName | uppercase }}</li>
-                      <li style="text-align: center;" class="list-group-item">{{ car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2" }}</li>
-                      <button class="btn btn-success" routerLink="/cars/cardetail/{{car.carId}}">Detay</button>
-                    </ul>
+              <div
+                style="margin-top: 15px"
+                *ngFor="let car of carDetails | filterCar: filterText"
+                [class]="colGenerator(carDetails)"
+              >
+                <div class="card" style="width: 18rem">
+                  <img
+                    height="200"
+                    [src]="
+                      car.images.length !== 0
+                        ? imageBasePath + car.images[0]
+                        : imageBasePath + defaultimg
+                    "
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body">
+                    <h5 style="text-align: center" class="card-title">
+                      {{ car.brandName }}
+                    </h5>
                   </div>
+                  <ul class="list-group list-group-flush">
+                    <li style="text-align: center" class="list-group-item">
+                      {{ car.carName | uppercase }}
+                    </li>
+                    <li style="text-align: center" class="list-group-item">
+                      {{ car.brandName | uppercase }}
+                    </li>
+                    <li style="text-align: center" class="list-group-item">
+                      {{ car.colorName | uppercase }}
+                    </li>
+                    <li style="text-align: center" class="list-group-item">
+                      {{
+                        car.dailyPrice | currency: "TRY":"symbol-narrow":"1.2-2"
+                      }}
+                    </li>
+                    <button
+                      class="btn btn-success"
+                      routerLink="/cars/cardetail/{{ car.carId }}"
+                    >
+                      Detay
+                    </button>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
-       
+        </div>
       </div>
     </div>
   </div>
