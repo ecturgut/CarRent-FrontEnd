@@ -15,7 +15,6 @@ import { FilterColorPipe } from './pipes/color/filter-color.pipe';
 import { FilterCarPipe } from './pipes/car/filter-car.pipe';
 import { FormsModule } from "@angular/forms";
 import { FooterComponent } from './components/footer/footer/footer.component';
-import { FilterPipePipe } from './pipes/filter/filter-pipe.pipe';
 
 
 
@@ -33,7 +32,6 @@ import { FilterPipePipe } from './pipes/filter/filter-pipe.pipe';
     FilterColorPipe,
     FilterCarPipe,
     FooterComponent,
-    FilterPipePipe
   ],
   imports: [
     HttpClientModule,
