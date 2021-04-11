@@ -25,9 +25,9 @@
               class="custom-select custom-select-md mb-3"
               [(ngModel)]="brandId"
             >
-              <option
-                [value]="brand.id"
+              <option               
                 *ngFor="let brand of brands"
+                [value]="brand.id"
                 [selected]="getSelectedBrandId(brand.id)"
               >
                 {{ brand.name }}

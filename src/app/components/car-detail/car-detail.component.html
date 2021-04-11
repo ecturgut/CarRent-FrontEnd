@@ -54,17 +54,8 @@
           </li>
           <li class="list-group-item">Araç Adı: {{ car.carName }}</li>
           <br>
-          <button
-          routerLink="/car/{{ car.carId }}"
-          type="button"
-          style="
-            width: auto;
-            background-color: #3f8b35;
-          "
-          class="btn btn-primary"
-        >
-          Kirala
-        </button>
+          
+        <app-rental [carrental]="carDetail"></app-rental>
 
         </ul>
         <section style="float: right">

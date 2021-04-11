@@ -1,25 +1,53 @@
-<div *ngIf= "dataLoaded==false" class="spinner-border text-success" role="status">
-    <span class="visually-hidden">Loading...</span>
+<!-- Button trigger modal -->
+<button  style="width: 100%; background-color: #3f8b35;"class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ Kirala
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Kiralama Detayı</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ml-2">
+          <label><h6>Kiralayan Müşteri</h6></label>
+        </div>
+        
+       <select class="form-select" [(ngModel)]="customerId" style="width: 40%" aria-label="Default select example" >
+          <option *ngFor="let customer of customerDetails" [ngValue]="customer.customerId" >
+            {{ customer.firstname }} {{ customer.lastname }}
+          </option>
+        </select>
+
+        <div class="mt-2">
+          <label><h6>Kiralama Tarihi</h6></label>
+        </div>
+        <div class="ml-2">
+          <input type="date" class="form-control" [(ngModel)]="rentDate" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+        </div>
+
+          <div class="mt-2">
+            <label><h6>Dönüş Tarihi</h6></label>
+          </div>
+          <div class="ml-2">
+            <input type="date" class="form-control" [(ngModel)]="returnDate" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+          </div>
+       
+
+      </div>
+      
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">İptal</button>
+        <button type="button" class="btn btn-warning" (click)="addRentalCar()">Kiralamayı Tamamla</button>
+      </div>
+    </div>
+
+      </div>
+      
   </div>
-  <table class="table" *ngIf= "dataLoaded==true">
-      <thead>
-      <tr>
-        <th>*</th>
-        <th>Brand Name</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Rent Date</th>
-        <th>Return Date</th> 
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let rental of rentals">
-        <td>{{ rental.id}}</td>
-        <td>{{ rental.brandName }}</td>
-        <td>{{ rental.firstName }} </td>
-        <td>{{ rental.lastName }}</td>
-        <td>{{ rental.rentDate }}</td>
-        <td>{{ rental.returnDate }}</td>
-      </tr>
-    </tbody>
-  </table> 
+
+
